@@ -12,7 +12,6 @@ public class WallMove : MonoBehaviour
     public Vector3 direction = new Vector3(0, -.05f, 0);
     public int maxMovement;
     int storedMaxMovement;
-    bool activeMovement;
     public bool bothNeeded;
     bool bothActive;
     // Start is called before the first frame update
@@ -49,7 +48,7 @@ public class WallMove : MonoBehaviour
 
     void moveWallUp()
     {
-        transform.Translate(-direction);
+        gameObject.transform.Translate(-direction);
         maxMovement++;
     }
 }

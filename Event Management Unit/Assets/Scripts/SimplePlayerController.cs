@@ -26,6 +26,7 @@ public class SimplePlayerController : MonoBehaviour
     public GameObject box;
     public GameObject deleteBarrier;
     public bool evolved;
+    public float timer;
 
     void Update()
     {
@@ -34,6 +35,14 @@ public class SimplePlayerController : MonoBehaviour
         ProcessJumping();
         SpawnBlocks();
         deleteBlocks();
+    }
+
+    void FixedUpdate()
+    {
+        if (timer >= 0.02)
+            timer -= 1 * Time.deltaTime;
+        else
+            timer = 0;
     }
 
     void PlayerMover()

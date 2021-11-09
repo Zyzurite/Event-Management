@@ -29,8 +29,8 @@ public class ButtonCheck : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
             playerActivated = true;
-        //if (other.gameObject.tag == "Weight")
-            //cubeActivated = true;
+        if (other.gameObject.tag == "Weight")
+            cubeActivated = true;
     }
 
     private void OnTriggerExit(Collider other)
