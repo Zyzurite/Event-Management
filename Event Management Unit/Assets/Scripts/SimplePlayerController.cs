@@ -12,7 +12,7 @@ public class SimplePlayerController : MonoBehaviour
     public CharacterController controller;
 
     // Variables for gravity
-    Vector3 velocity;
+    public Vector3 velocity;
     public float gravity = -9.81f;
 
     // Variables for jumping
@@ -20,13 +20,15 @@ public class SimplePlayerController : MonoBehaviour
 
     // Update is called once per frame
 
-    public int cubeCount;
+    public float cubeCount;
     public GameObject floor;
     public GameObject wall;
     public GameObject box;
     public GameObject deleteBarrier;
     public bool evolved;
     public float timer;
+    public GameObject warpPoint;
+    bool timerActive;
 
     void Update()
     {
@@ -40,9 +42,19 @@ public class SimplePlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (timer >= 0.02)
+        {
             timer -= 1 * Time.deltaTime;
-        else
-            timer = 0;
+            timerActive = true;
+        }
+            
+
+        if (timer <= 0.1 && timerActive)
+        {
+            gameObject.transform.position = warpPoint.transform.position;
+            timerActive = false;
+            velocity =  new Vector3(0, 0, 0);
+        }
+            
     }
 
     void PlayerMover()
@@ -61,7 +73,7 @@ public class SimplePlayerController : MonoBehaviour
 
     void ApplyGravity()
     {
-        if (controller.isGrounded && velocity.y < 0)
+        if (controller.isGrounded)
         {
             velocity.y = 0f;
         }

@@ -25,7 +25,7 @@ public class CubeCollect : MonoBehaviour
             if (controller != null)
             {
                 other.GetComponent<SimplePlayerController>().cubeCount += 1;
-                transform.parent.Translate(100, 100, 100);
+                transform.parent.position = new Vector3(100, 100, 100);
                 Destroy(transform.parent.gameObject, 0.1f);
             }
         }

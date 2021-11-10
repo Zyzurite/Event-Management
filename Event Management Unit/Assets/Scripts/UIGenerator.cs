@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIGenerator : MonoBehaviour
 {
-    private Text text;
+    private Text cubeText;
     public GameObject player;
     private Text timerText;
     
@@ -30,13 +30,13 @@ public class UIGenerator : MonoBehaviour
         textGO.transform.parent = canvasUI.transform;
         textGO.AddComponent<Text>();
 
-        text = textGO.GetComponent<Text>();
-        text.font = arial;
-        text.fontSize = 30;
-        text.alignment = TextAnchor.UpperLeft;
+        cubeText = textGO.GetComponent<Text>();
+        cubeText.font = arial;
+        cubeText.fontSize = 30;
+        cubeText.alignment = TextAnchor.UpperLeft;
 
         RectTransform rectTransform;
-        rectTransform = text.GetComponent<RectTransform>();
+        rectTransform = cubeText.GetComponent<RectTransform>();
         rectTransform.localPosition = new Vector3(0, 0, 0);
         rectTransform.sizeDelta = new Vector2(canvas.renderingDisplaySize.x - 20, canvas.renderingDisplaySize.y);
 
@@ -57,8 +57,10 @@ public class UIGenerator : MonoBehaviour
 
     void Update()
     {
-        int cubeCount = player.GetComponent<SimplePlayerController>().cubeCount;
-        text.text = ("Material Left: " + cubeCount);
+        float cubeCount = player.GetComponent<SimplePlayerController>().cubeCount;
+        cubeText.text = ("Material Left: " + cubeCount);
+        cubeText.text = cubeCount.ToString("Materials Left: " + "0");
+
         float timerCount = player.GetComponent<SimplePlayerController>().timer;
         timerText.text = timerCount + "";
         timerText.text = timerCount.ToString("0.0");
