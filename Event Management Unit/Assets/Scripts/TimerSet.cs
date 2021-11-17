@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TimerSet : MonoBehaviour
 {
-    public int time;
+    public float time;
+    public bool reset;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +22,7 @@ public class TimerSet : MonoBehaviour
     {
         if (other.gameObject.tag == ("Player") && other.GetComponent<SimplePlayerController>().timer <= 0.1)
             other.GetComponent<SimplePlayerController>().timer = time;
+        if (other.gameObject.tag == ("Player") && reset)
+            other.GetComponent<SimplePlayerController>().timer = 0.1f;
     }
 }

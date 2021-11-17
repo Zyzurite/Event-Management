@@ -8,7 +8,7 @@ public class UIGenerator : MonoBehaviour
     private Text cubeText;
     public GameObject player;
     private Text timerText;
-    
+    private Text buttonText;
 
     void Awake()
     {
@@ -40,7 +40,7 @@ public class UIGenerator : MonoBehaviour
         rectTransform.localPosition = new Vector3(0, 0, 0);
         rectTransform.sizeDelta = new Vector2(canvas.renderingDisplaySize.x - 20, canvas.renderingDisplaySize.y);
 
-        GameObject timer = new GameObject("timer");
+        GameObject timer = new GameObject();
         timer.transform.parent = canvasUI.transform;
         timer.AddComponent<Text>();
 
@@ -52,7 +52,7 @@ public class UIGenerator : MonoBehaviour
         RectTransform timerTransform;
         timerTransform = timerText.GetComponent<RectTransform>();
         timerTransform.localPosition = new Vector3(0, 0, 0);
-        timerTransform.sizeDelta = new Vector2(canvas.renderingDisplaySize.x /16, canvas.renderingDisplaySize.y); 
+        timerTransform.sizeDelta = new Vector2(canvas.renderingDisplaySize.x / 16, canvas.renderingDisplaySize.y);
     }
 
     void Update()

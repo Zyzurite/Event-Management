@@ -19,23 +19,25 @@ public class WallMove : MonoBehaviour
     void Start()
     {
         storedMaxMovement = maxMovement;
+        
     }
     void FixedUpdate()
     {
+        bool buttonDown = button1.GetComponentInChildren<ButtonCheck>().activated;
         if (!bothNeeded)
             bothActive = true;
         if (bothNeeded)
         {
-            if (button1.GetComponentInChildren<ButtonCheck>().activated && button2.GetComponentInChildren<ButtonCheck>().activated)
+            if (buttonDown && button2.GetComponentInChildren<ButtonCheck>().activated)
                 bothActive = true;
             else 
                 bothActive = false;
         }
         
 
-        if (button1.GetComponentInChildren<ButtonCheck>().activated && maxMovement >= 0 && bothActive)
+        if (buttonDown && maxMovement >= 0 && bothActive)
             moveWallDown();
-        else if (!button1.GetComponentInChildren<ButtonCheck>().activated && maxMovement <= storedMaxMovement || !bothActive && maxMovement <= storedMaxMovement)
+        else if (!buttonDown && maxMovement <= storedMaxMovement || !bothActive && maxMovement <= storedMaxMovement)
             moveWallUp();
         
     }
