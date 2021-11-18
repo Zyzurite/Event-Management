@@ -10,7 +10,7 @@ public class KeyCollect : MonoBehaviour
     public GameObject text;
     public GameObject Player;
     public bool killWallPiece;
-    public GameObject wallPiece;
+    public GameObject wall;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class KeyCollect : MonoBehaviour
         gameObject.transform.parent.gameObject.transform.parent.gameObject.SetActive(false);
 
         if (killWallPiece)
-            Destroy(wallPiece);
+            Destroy(wall.transform.GetChild(0).gameObject);
     }
 
 }

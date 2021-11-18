@@ -9,7 +9,16 @@ public class DestroyParent : MonoBehaviour
     void Update()
     {
         if (transform.childCount <= 0)
-            Destroy(gameObject);
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        if (transform.childCount > 0)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
     }
 
 }
