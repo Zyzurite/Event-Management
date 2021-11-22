@@ -17,6 +17,8 @@ public class SimplePlayerController : MonoBehaviour
 
     // Variables for jumping
     public float jumpHeight = 3f;
+    public bool isGrounded = false;
+    public float charHeight = 1.2f;
 
     // Update is called once per frame
 
@@ -35,6 +37,7 @@ public class SimplePlayerController : MonoBehaviour
         PlayerMover();
         ApplyGravity();
         ProcessJumping();
+        ProcessRaycast();
         SpawnBlocks();
         deleteBlocks();
     }
@@ -87,6 +90,23 @@ public class SimplePlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+    }
+
+    void ProcessRaycast()
+    {
+        RaycastHit hit;
+
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red, charHeight);
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), charHeight))
+        {
+            Debug.Log("Hit ground!");
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
         }
     }
 
