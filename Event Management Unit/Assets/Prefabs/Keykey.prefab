@@ -292,8 +292,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6092337868952970118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.00035703683, z: -0.000032233605}
-  m_LocalScale: {x: 2.7487915, y: 1.0624859, z: 11.45616}
+  m_LocalPosition: {x: 0, y: -0.0024902, z: -0.000032234}
+  m_LocalScale: {x: 2.7487915, y: 1.4363145, z: 11.45616}
   m_Children: []
   m_Father: {fileID: 627936077975276579}
   m_RootOrder: 0
@@ -378,6 +378,8 @@ MonoBehaviour:
   greenKey: 0
   text: {fileID: 6092337868664157237}
   Player: {fileID: 0}
+  killWallPiece: 0
+  wall: {fileID: 0}
 --- !u!1 &6362808724848143171
 GameObject:
   m_ObjectHideFlags: 0
