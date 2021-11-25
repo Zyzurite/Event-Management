@@ -5,10 +5,11 @@ using UnityEngine;
 public class deleteAfter : MonoBehaviour
 {
     public float timer;
+    private float storedTimer;
     // Start is called before the first frame update
     void Awake()
     {
-        
+        storedTimer = timer;
     }
 
     // Update is called once per frame
@@ -16,6 +17,10 @@ public class deleteAfter : MonoBehaviour
     {
         timer-= Time.deltaTime;
         if (timer <= 0)
+        {
             gameObject.SetActive(false);
+            timer = storedTimer;
+        }
+        
     }
 }

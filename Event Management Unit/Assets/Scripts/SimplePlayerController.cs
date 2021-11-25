@@ -46,7 +46,7 @@ public class SimplePlayerController : MonoBehaviour
     {
         if (timer >= 0.02)
         {
-            timer -= 1 * Time.deltaTime;
+            timer -= Time.deltaTime;
             timerActive = true;
         }
             
@@ -128,6 +128,7 @@ public class SimplePlayerController : MonoBehaviour
             Vector3 playerPos = this.transform.position;
             Vector3 playerDirection = this.transform.forward;
             Quaternion playerRotation = this.transform.rotation;
+            playerPos.y -= 0.3f;
 
             Vector3 cubePos = playerPos + playerDirection * 3;
             Instantiate(wall, cubePos, playerRotation);
