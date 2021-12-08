@@ -9,6 +9,7 @@ public class GameManage : MonoBehaviour
     private void Start()
     {
         player = gameObject.GetComponent<SimplePlayerController>();
+        
     }
     public void restartScene()
     {
@@ -17,10 +18,12 @@ public class GameManage : MonoBehaviour
 
     public void loadCheckpoint()
     {
-        PlayerSave data = SaveSystem.LoadPlayer();
-
-        player.checkpoint = data.checkpoint;
         player.timer = 0.1f;
+        PlayerSave data = SaveSystem.LoadPlayer();
+        player.checkpoint = data.checkpoint;
+        player.greenKey = data.greenKey;
+        player.blueKey = data.blueKey;
+        player.redKey = data.redKey;
     }
 
     public void saveCheckpoint()

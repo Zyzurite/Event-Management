@@ -11,12 +11,12 @@ public class KeyCollect : MonoBehaviour
     public GameObject Player;
     public bool killWallPiece;
     public GameObject wall;
-    private KeyMemory keys;
+    private SimplePlayerController keys;
 
     // Start is called before the first frame update
     void Start()
     {
-        keys = Player.GetComponent<KeyMemory>();
+        keys = Player.GetComponent<SimplePlayerController>();
     }
 
     // Update is called once per frame
@@ -24,15 +24,15 @@ public class KeyCollect : MonoBehaviour
     {
         if (redKey)
             if (keys.redKey)
-                gameObject.SetActive(false);
+                StartCoroutine("KeyCheck");
 
         if (blueKey)
             if (keys.blueKey)
-                gameObject.SetActive(false);
+                StartCoroutine("KeyCheck");
 
         if (greenKey)
             if (keys.greenKey)
-                gameObject.SetActive(false);
+                StartCoroutine("KeyCheck");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,13 +50,13 @@ public class KeyCollect : MonoBehaviour
     IEnumerator KeyCheck()
     {
         if (redKey)
-            Player.GetComponent<KeyMemory>().redKey = true;
+            keys.redKey = true;
 
         else if (blueKey)
-            Player.GetComponent<KeyMemory>().blueKey = true;
+            keys.blueKey = true;
 
         else if (greenKey)
-            Player.GetComponent<KeyMemory>().greenKey = true;
+            keys.greenKey = true;
 
         text.SetActive(true);
         gameObject.transform.parent.gameObject.GetComponentInParent<MeshRenderer>().enabled = false;

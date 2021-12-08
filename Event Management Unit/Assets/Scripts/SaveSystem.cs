@@ -7,7 +7,7 @@ public static class SaveSystem
     public static void SavePlayer(SimplePlayerController player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.checkpoint";
+        string path = Application.persistentDataPath + "/player.data";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerSave data = new PlayerSave(player);
@@ -18,7 +18,7 @@ public static class SaveSystem
 
     public static PlayerSave LoadPlayer ()
     {
-        string path = Application.persistentDataPath + "/player.checkpoint";
+        string path = Application.persistentDataPath + "/player.data";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

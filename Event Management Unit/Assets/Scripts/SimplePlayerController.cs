@@ -33,6 +33,9 @@ public class SimplePlayerController : MonoBehaviour
     public GameObject warpPointParent;
     bool timerActive;
     public int checkpoint;
+    public bool redKey;
+    public bool blueKey;
+    public bool greenKey;
 
     private void Start()
     {if (!evolved)
@@ -62,11 +65,10 @@ public class SimplePlayerController : MonoBehaviour
 
         if (timer <= 0.1 && timerActive)
         {
-            if(!evolved)
             gameObject.transform.position = warpPoint.transform.position;
             timerActive = false;
-            //timer = 0;
             velocity = new Vector3(0, 0, 0);
+            gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
 
     }
