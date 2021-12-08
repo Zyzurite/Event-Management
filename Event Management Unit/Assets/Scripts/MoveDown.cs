@@ -43,6 +43,7 @@ public class MoveDown : MonoBehaviour
                 moveDown = true;
                 activeMovement = true;
                 moveUp = false;
+                gameObject.GetComponent<Renderer>().material.color = Color.green;
             }
 
             if (controller != null && !activeMovement && !moveUp)
@@ -50,6 +51,8 @@ public class MoveDown : MonoBehaviour
                 moveUp = true;
                 activeMovement = true;
                 moveDown = false;
+                gameObject.GetComponent<Renderer>().material.color = Color.red;
+                
             }
         }
     }

@@ -16,7 +16,8 @@ public class KeyDoor : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Player.GetComponent<KeyMemory>().redKey && Player.GetComponent<KeyMemory>().blueKey && Player.GetComponent<KeyMemory>().greenKey)
+        KeyMemory key = Player.GetComponent<KeyMemory>();
+        if (key.redKey && key.blueKey && key.greenKey)
             if (Lever.GetComponent<Lever>().activated && !hasRun)
                 StartCoroutine("OpenDoor");
     }

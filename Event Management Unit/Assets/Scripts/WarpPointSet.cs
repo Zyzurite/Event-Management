@@ -5,21 +5,14 @@ using UnityEngine;
 public class WarpPointSet : MonoBehaviour
 {
     public GameObject newWarpPoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public int checkpointNumber;
+    private SimplePlayerController playerData;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == ("Player"))
-            other.GetComponent<SimplePlayerController>().warpPoint = newWarpPoint;
+        playerData = other.GetComponent<SimplePlayerController>();
+        if (other.gameObject.tag == ("Player") && playerData.checkpoint < checkpointNumber)
+        {
+            playerData.checkpoint += 1;
+        }
     }
 }

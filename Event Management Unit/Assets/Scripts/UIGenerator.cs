@@ -53,6 +53,7 @@ public class UIGenerator : MonoBehaviour
         timerTransform = timerText.GetComponent<RectTransform>();
         timerTransform.localPosition = new Vector3(0, 0, 0);
         timerTransform.sizeDelta = new Vector2(canvas.renderingDisplaySize.x / 16, canvas.renderingDisplaySize.y);
+        
     }
 
     void Update()

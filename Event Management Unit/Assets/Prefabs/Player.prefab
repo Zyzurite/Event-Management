@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e75b38b56ba271419c6aa48672ba923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 200
   speed: 12
   playerBody: {fileID: 3977648607847533899}
   controller: {fileID: 3977648607847533903}
@@ -466,7 +466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4781983424981911299}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.168, y: 1.746, z: 0.421}
+  m_LocalPosition: {x: 0.168, y: 1.8800001, z: 0.3460002}
   m_LocalScale: {x: 0.038304165, y: 0.038304165, z: 0.038304165}
   m_Children: []
   m_Father: {fileID: 3977648607847533899}
@@ -561,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4971908144118848760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.182, y: 1.746, z: 0.421}
+  m_LocalPosition: {x: -0.182, y: 1.88, z: 0.346}
   m_LocalScale: {x: 0.038304165, y: 0.038304165, z: 0.038304165}
   m_Children: []
   m_Father: {fileID: 3977648607847533899}

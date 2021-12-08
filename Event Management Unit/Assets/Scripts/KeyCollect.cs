@@ -11,17 +11,28 @@ public class KeyCollect : MonoBehaviour
     public GameObject Player;
     public bool killWallPiece;
     public GameObject wall;
+    private KeyMemory keys;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        keys = Player.GetComponent<KeyMemory>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (redKey)
+            if (keys.redKey)
+                gameObject.SetActive(false);
+
+        if (blueKey)
+            if (keys.blueKey)
+                gameObject.SetActive(false);
+
+        if (greenKey)
+            if (keys.greenKey)
+                gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

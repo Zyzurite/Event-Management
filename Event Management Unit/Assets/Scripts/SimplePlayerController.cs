@@ -30,8 +30,15 @@ public class SimplePlayerController : MonoBehaviour
     public bool evolved;
     public float timer;
     public GameObject warpPoint;
+    public GameObject warpPointParent;
     bool timerActive;
+    public int checkpoint;
 
+    private void Start()
+    {if (!evolved)
+        warpPoint = warpPointParent.transform.GetChild(0).gameObject;
+        timer = 0.1f;
+    }
     void Update()
     {
         PlayerMover();
@@ -40,24 +47,28 @@ public class SimplePlayerController : MonoBehaviour
         ProcessRaycast();
         SpawnBlocks();
         deleteBlocks();
+        if(!evolved)
+        loadCheckpoint();
     }
 
     void FixedUpdate()
     {
-        if (timer >= 0.02)
+        if (timer > 0)
         {
             timer -= Time.deltaTime;
             timerActive = true;
         }
-            
+
 
         if (timer <= 0.1 && timerActive)
         {
+            if(!evolved)
             gameObject.transform.position = warpPoint.transform.position;
             timerActive = false;
-            velocity =  new Vector3(0, 0, 0);
+            //timer = 0;
+            velocity = new Vector3(0, 0, 0);
         }
-            
+
     }
 
     void PlayerMover()
@@ -87,7 +98,7 @@ public class SimplePlayerController : MonoBehaviour
 
     void ProcessJumping()
     {
-        if(Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -95,9 +106,7 @@ public class SimplePlayerController : MonoBehaviour
 
     void ProcessRaycast()
     {
-        RaycastHit hit;
-
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red, charHeight);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red, 999);
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), charHeight))
         {
@@ -112,7 +121,7 @@ public class SimplePlayerController : MonoBehaviour
 
     void SpawnBlocks()
     {
-        if(Input.GetKeyDown(KeyCode.E) && cubeCount >= 1 && evolved)
+        if (Input.GetKeyDown(KeyCode.E) && cubeCount >= 1 && evolved)
         {
             Vector3 playerPos = this.transform.position;
             Vector3 playerDirection = this.transform.forward;
@@ -121,7 +130,7 @@ public class SimplePlayerController : MonoBehaviour
             Vector3 cubePos = playerPos + playerDirection * 3;
             Instantiate(floor, cubePos, playerRotation);
             cubeCount -= 1;
-            
+
         }
         if (Input.GetKeyDown(KeyCode.Q) && cubeCount >= 1 && evolved)
         {
@@ -144,7 +153,6 @@ public class SimplePlayerController : MonoBehaviour
             Vector3 cubePos = playerPos + playerDirection * 3;
             Instantiate(box, cubePos, playerRotation);
             cubeCount -= 1;
-
         }
     }
     void deleteBlocks()
@@ -153,5 +161,10 @@ public class SimplePlayerController : MonoBehaviour
             deleteBarrier.SetActive(true);
         else if (Input.GetKeyUp(KeyCode.V))
             deleteBarrier.SetActive(false);
+    }
+
+    void loadCheckpoint()
+    {
+        warpPoint = warpPointParent.transform.GetChild(checkpoint).gameObject;
     }
 }
